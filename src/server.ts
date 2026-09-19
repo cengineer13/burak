@@ -1,8 +1,11 @@
 console.log("executed");
 
-import moment from 'moment'
+// Architectural pattern: Backend: MVC, DI, Frontend: MVP - Backend arxitekturasi, suyagi
+// MVC - MODEL VIEW CONTROLLER
+// Dependency Injection - asosan Nest Js da ishlatiladi
 
-const currentTime = moment().format("YYYY MM DD");
-console.log(currentTime)
 
+
+// Design pattern: Middleware, Decorator
+// Backend ma'lum bo'laklarini bajaruvchi qism 
 
