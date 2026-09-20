@@ -10,26 +10,41 @@
 // Backend ma'lum bo'laklarini bajaruvchi qism 
 
 
-let box: string = "Hello";
+// let box: string = "Hello";
 
-const counter: number = 100;
+// const counter: number = 100;
 
-let stage: number | string = "hello";
-stage = 100;
+// let stage: number | string = "hello";
+// stage = 100;
 
-let pending: boolean = true;
+// let pending: boolean = true;
 
-// interface 
+// // interface 
 
-interface Person {
-    name: string,
-    age: number,
-    nation: string
+// interface Person {
+//     name: string,
+//     age: number,
+//     nation: string
+// }
+
+// const person: Person = {
+//     name: "Marcus",
+//     age: 32,
+//     nation: "Uzbek",
+// }
+
+
+
+/* stringList(myList) - myList stringlar listini
+Masalan: ["Python", "Hello", "World", "Good"]
+Toq o'rindagi elementlarni toq va juft indexdagi harflarni o'rnini alishtiring.
+ */
+
+let array: string[] = ["Python", "Hello", "World", "Good"];
+
+function stringList(array: string[]) {
+    const el_1: string = array[1];
+    const el_2: string = array[2];
+
+
 }
-
-const person: Person = {
-    name: "Marcus",
-    age: 32,
-    nation: "Uzbek",
-}
-
