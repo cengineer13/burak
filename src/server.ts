@@ -1,11 +1,6 @@
-console.log("executed");
+import dotenv from 'dotenv'
 
-// Architectural pattern: Backend: MVC, DI, Frontend: MVP - Backend arxitekturasi, suyagi
-// MVC - MODEL VIEW CONTROLLER
-// Dependency Injection - asosan Nest Js da ishlatiladi
-
-
-
-// Design pattern: Middleware, Decorator
-// Backend ma'lum bo'laklarini bajaruvchi qism 
+dotenv.config();
+console.log(process.env.PORT)
+console.log(process.env.MONGO_ATLAS_URL)
 

@@ -2,7 +2,7 @@ console.log("============== TASK K ==============")
 /* Berilayotgan parametr tarkibida nechta unli harf bor ekanligini aniqlovchi function tuzing.
 Masalan: countVowels("string") return 1 */
 
-function countVowels(word: string) {
+function countVowels(word: string): number {
     let count: number = 0;
     for (const letter of word.toLocaleLowerCase()) {
         if ("aeiou".includes(letter)) count += 1;
@@ -18,7 +18,7 @@ console.log("============== TASK L ==============")
 Masalan: reverseSentence("we like coding!") return "ew ekil !gnidoc */
 
 // Bu safar arrow funtion orqali hosil qildim
-const result_l = (sentence: string) => {
+const result_l = (sentence: string): string => {
     let reversedText: string = "";
     const array: string[] = sentence.split(" ");
     for (const word of array) {
