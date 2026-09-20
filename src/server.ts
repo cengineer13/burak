@@ -1,6 +1,12 @@
 import dotenv from 'dotenv'
+import mongoose from 'mongoose';
 
 dotenv.config();
-console.log(process.env.PORT)
-console.log(process.env.MONGO_ATLAS_URL)
+
+mongoose.connect(process.env.MONGO_URL as string, {})
+    .then((data) => {
+        console.log("MongoDB connected succesfully!");
+        const PORT = process.env.PORT ?? 3003;
+    })
+    .catch((err) => console.log("ERROR on connection Mongo DB ", err));
 
