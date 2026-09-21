@@ -29,4 +29,25 @@ const result_l = (sentence: string): string => {
 
 }
 const text: string = "We like codinG!";
-console.log(`${text} ==> ning teskari natijasi ==> ${result_l(text)}`)
+console.log(`${text} ==> ning teskari natijasi ==> ${result_l(text)}\n`)
+
+
+console.log("============== TASK M ==============")
+/*Array ichidagi har bir raqam uchun raqamning o'zi va uning kvadratidan tashkil topgan object hosil qilib qaytarsin.
+Masalan: getSquareNumbers([1, 2, 3]) return [{number: 1, square: 1}, ...] */
+
+interface squaredList {
+    number: number;
+    square: number
+}
+function getSquareNumbers(array: number[]): squaredList[] {
+
+    const result: squaredList[] = [];
+    for (const el of array) {
+        result.push({ number: el, square: el * el });
+    }
+    return result;
+};
+const array: number[] = [1, 2, 3]
+const result_m = getSquareNumbers(array)
+console.log(array, " ==> kvadratlangan natija ==>", result_m)

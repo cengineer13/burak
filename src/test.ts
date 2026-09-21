@@ -9,7 +9,6 @@
 // Design pattern: Middleware, Decorator
 // Backend ma'lum bo'laklarini bajaruvchi qism 
 
-
 // let box: string = "Hello";
 
 // const counter: number = 100;

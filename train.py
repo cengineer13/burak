@@ -37,3 +37,18 @@ result_l = reverseSentence(sentence)
 print(
     f"Natija: {sentence} ==> teskari natijasi ==>: {result_l} ")
 print("\n")
+
+
+print("============== TASK M ==============")
+print("""Array ichidagi har bir raqam uchun raqamning o'zi va uning kvadratidan tashkil topgan object 
+hosil qilib qaytarsin.Masalan: getSquareNumbers([1, 2, 3]) return [{number: 1, square: 1}, ...]
+""")
+
+
+def getSquareNumbers(array):
+    return [{"number": i, "square": i**2} for i in array]
+
+
+array = [1, 2, 3]
+result_m = getSquareNumbers(array)
+print(f"{array} kvadratlari ==> {result_m}")
