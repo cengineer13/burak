@@ -1,18 +1,12 @@
 import expres, { Request, Response } from 'express';
-
+import memberController from './controllers/member.controller';
 const router = expres.Router();
 
 
-router.get("/", (req: Request, res: Response) => {
-    res.send("You are on homepage")
-});
+router.get("/", memberController.goHome);
 
-router.get("/login", (req: Request, res: Response) => {
-    res.send("Login page")
-});
+router.get("/login", memberController.getLogin);
+router.get("/signup", memberController.getSignup);
 
-router.get("/signup", (req: Request, res: Response) => {
-    res.send("Signup page")
-});
 
 export default router;

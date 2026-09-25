@@ -52,3 +52,19 @@ def getSquareNumbers(array):
 array = [1, 2, 3]
 result_m = getSquareNumbers(array)
 print(f"{array} kvadratlari ==> {result_m}")
+
+print("============== TASK N ==============")
+print("""Stringni palindrom ekanligini aniqlab true yoki false qaytarsin.
+Masalan: palindromCheck("dad") return true
+""")
+
+
+def palindromCheck(word):
+    word = word.strip()
+    reversed_word = word[::-1]
+    return True if word.lower() == reversed_word.lower() else False
+
+
+word = "alla"
+result_n = palindromCheck(word)
+print(f"{word} so'zi {'palindrom' if result_n else 'palindrom emas'}")

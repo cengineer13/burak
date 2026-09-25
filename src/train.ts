@@ -51,3 +51,20 @@ function getSquareNumbers(array: number[]): squaredList[] {
 const array: number[] = [1, 2, 3]
 const result_m = getSquareNumbers(array)
 console.log(array, " ==> kvadratlangan natija ==>", result_m)
+
+
+console.log("============== TASK N ==============")
+/* Stringni palindrom ekanligini aniqlab true yoki false qaytarsin.
+Masalan: palindromCheck("dad") return true */
+
+
+function palindromCheck(word: string): boolean {
+    const reversed: string = word.split("").reverse().join("");
+    const result: boolean = reversed.toLowerCase() === word.toLowerCase() ? true : false
+    return result;
+};
+
+const word_n: string = "dad"
+const result_n: boolean = palindromCheck(word_n)
+console.log(`${word_n} so'zi polindromlik natijasi: ${result_n}`)
+
