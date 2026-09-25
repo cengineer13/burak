@@ -7,7 +7,7 @@ dotenv.config();
 mongoose.connect(process.env.MONGO_URL as string, {})
     .then((data) => {
         console.log("MongoDB connected succesfully!");
-        const PORT = process.env.PORT ?? 3003;
+        const PORT = process.env.PORT ?? 3000;
         app.listen(PORT, function () {
             console.log(`The server is running succesfully on port: https://localhost:${PORT}`);
         });
