@@ -1,6 +1,6 @@
 import express from 'express'
 import path from 'path'
-import router from './router';
+// import router from './router';
 import routerAdmin from "./routerAdmin"
 
 // 1 - Kirish
@@ -18,7 +18,7 @@ app.set("view engine", "ejs");
 
 // 4 - Routers
 app.use("/admin", routerAdmin);    // SSR: EJS
-app.use("/", router);             // SPA: React
+// app.use("/", router);             // SPA: React
 
 export default app;
 

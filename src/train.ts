@@ -66,5 +66,5 @@ function palindromCheck(word: string): boolean {
 
 const word_n: string = "dad"
 const result_n: boolean = palindromCheck(word_n)
-console.log(`${word_n} so'zi polindromlik natijasi: ${result_n}`)
+console.log(`${word_n} so'zining polindromlik natijasi: ${result_n}`)
 

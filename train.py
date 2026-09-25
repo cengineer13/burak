@@ -15,7 +15,7 @@ def countVowels(word):
 
 word_k = "Stringa"
 result_k = countVowels(word_k)
-print(f"Natija: {word_k} so'zida {result_k} ta unli qatnashgan.")
+print(f"Natija: {word_k} so'zida {result_k} ta unli qatnashgan.\n")
 print("\n")
 
 
@@ -51,7 +51,7 @@ def getSquareNumbers(array):
 
 array = [1, 2, 3]
 result_m = getSquareNumbers(array)
-print(f"{array} kvadratlari ==> {result_m}")
+print(f"{array} kvadratlari ==> {result_m}\n")
 
 print("============== TASK N ==============")
 print("""Stringni palindrom ekanligini aniqlab true yoki false qaytarsin.
