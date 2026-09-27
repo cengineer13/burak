@@ -5,6 +5,10 @@ const restaurantController: T = {};
 
 restaurantController.goHome = (req: Request, res: Response) => {
     try {
+        console.log("goHome")
+        // LOGIC
+        //SERVICE MODEL va xokazo ... (yoziladi)
+
         res.send("You are on Admin homepage");
     } catch (err) {
         console.log("Error on goHome:", err)
@@ -21,7 +25,7 @@ restaurantController.getLogin = (req: Request, res: Response) => {
 
 restaurantController.getSignup = (req: Request, res: Response) => {
     try {
-        res.send("Signup page")
+        res.send("Admin Signup page")
     } catch (err) {
         console.log("Error on goHome:", err)
     }
