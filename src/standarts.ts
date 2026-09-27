@@ -4,7 +4,7 @@
     - Naming standarts
         function, method, variable => camelCase         goHome
         classes => PascalCase                           MemberService
-        folder => kebab-case                            image-file
+        folder, file => kebab-case                            image-file
         css => snake_case                               button_style
     
     - Error Handling
