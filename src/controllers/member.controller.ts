@@ -16,7 +16,7 @@ const memberController: T = {};
 //     res.send("Signup Page"); // Bu yerda o'zingizning logikangizni yozasiz
 // };
 
-// export default memberController;
+export default memberController;
 
 
 
