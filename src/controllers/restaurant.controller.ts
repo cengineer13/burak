@@ -13,7 +13,7 @@ restaurantController.goHome = (req: Request, res: Response) => {
     console.log("goHome");
     // LOGIC
     //SERVICE MODEL va xokazo ... (yoziladi)
-    res.send("You are on Admin homepage");
+    res.render("home");
     // response: send | json | redirect | end | render
   } catch (err) {
     console.log("Error on goHome:", err);
@@ -22,7 +22,7 @@ restaurantController.goHome = (req: Request, res: Response) => {
 restaurantController.getLogin = (req: Request, res: Response) => {
   try {
     console.log("getLogin");
-    res.send("Login Admin page");
+    res.render("login");
   } catch (err) {
     console.log("Error on goHome:", err);
   }
@@ -30,7 +30,7 @@ restaurantController.getLogin = (req: Request, res: Response) => {
 
 restaurantController.getSignup = (req: Request, res: Response) => {
   try {
-    res.send("Admin Signup page");
+    res.render("signup");
   } catch (err) {
     console.log("Error on goHome:", err);
   }
