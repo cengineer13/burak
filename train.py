@@ -40,7 +40,7 @@ print("\n")
 
 
 print("============== TASK M ==============")
-print("""Array ichidagi har bir raqam uchun raqamning o'zi va uning kvadratidan tashkil topgan object 
+print("""Array ichidagi har bir raqam uchun raqamning o'zi va uning kvadratidan tashkil topgan object
 hosil qilib qaytarsin.Masalan: getSquareNumbers([1, 2, 3]) return [{number: 1, square: 1}, ...]
 """)
 
@@ -68,3 +68,51 @@ def palindromCheck(word):
 word = "alla"
 result_n = palindromCheck(word)
 print(f"{word} so'zi {'palindrom' if result_n else 'palindrom emas'}")
+
+
+print("============== TASK O ==============")
+print("""Array ichidagi har xil qiymatlardan faqat sonlar yig'indisini hisoblab qaytarsin.
+Masalan: calculateSumOfNumbers([10, "10", {son: 10}, true, 35]) return 45
+""")
+
+def calculateSumOfNumbers(array):
+    sum = 0
+    for i in array:
+        if isinstance(i, int) and not isinstance(i, bool):
+            sum += i
+    return sum
+
+
+array_o = [10, "10", {"son": 10}, True, 35]
+result_o = calculateSumOfNumbers(array_o)
+print(f"{array_o} arrayida faqat sonlar yig'indisi: {result_o}\n\n")
+
+
+print("============== TASK P ==============")
+print("""Objectni nested array sifatida convert qilib qaytarsin.
+Masalan: objectToArray({a: 10, b: 20}) return [["a", 10], ["b", 20]]
+""")
+
+def objectToArray(obj):
+    return [[key, value] for key, value in obj.items()]
+
+obj_p = {"a": 10, "b": 20}
+result_p = objectToArray(obj_p)
+print(f"{obj_p} object ==> {result_p} arrayga o'tkazildi!\n")
+
+
+print("============== TASK Q ==============")
+print("""Objectda berilgan string propertysi borligini tekshirsin.
+Masalan: hasProperty({name: "BMW"}, "name") return true
+""")
+
+def hasProperty(obj, key):
+    return key in obj
+
+
+obj_q = {"name": "BMW"}
+key_q = "name"
+
+result_q = hasProperty(obj_q, key_q)
+
+print(f"{obj_q} obyektida '{key_q}' {'mavjud' if result_q else 'mavjud emas'}!\n")

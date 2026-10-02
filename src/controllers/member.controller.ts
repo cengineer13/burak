@@ -1,23 +1,52 @@
+import { Request, Response } from "express";
 import { T } from "../libs/types/common";
+import { MemberInput, LoginInput, Member } from "../libs/types/member";
+import MemberService from "../models/member.service";
+import Errors from "../libs/errors";
 
 // Front End - React uchun
+const memberService = new MemberService();
 
 const memberController: T = {};
 
-// memberController.goHome = (req: Request, res: Response) => {
-//     res.send("Home Page"); // Bu yerda o'zingizning logikangizni yozasiz
-// };
+memberController.signup = async (req: Request, res: Response) => {
+  try {
+    console.log("Process User Signup");
+    console.log("POST: user sign up body:", req.body);
 
-// memberController.getLogin = (req: Request, res: Response) => {
-//     res.send("Login Page"); // Bu yerda o'zingizning logikangizni yozasiz
-// };
+    const input: MemberInput = req.body,
+      result: Member = await memberService.signup(input);
+      // TODO: tokens
+    
+    res.json({ member: result });
+  } catch (err) {
+    console.log("Error on User signup Process:", err);
+  
+    // Agar err biz hosil qilgan class ichidagi errolardan bolsa jsonga ogirib uni qayta jonatadi
+    if (err instanceof Errors) res.status(err.code).json(err);
+    // customized error classda mavjud bolmagan error bolsa shu qator ishlaydi
+    else res.status(Errors.standart.code).json(Errors.standart); 
+  }
+};
 
-// memberController.getSignup = (req: Request, res: Response) => {
-//     res.send("Signup Page"); // Bu yerda o'zingizning logikangizni yozasiz
-// };
+memberController.login = async (req: Request, res: Response) => {
+  try {
+    console.log("Process User Login");
+    console.log("POST: input user login req body:", req.body);
+
+    const input: LoginInput = req.body,
+      result = await memberService.login(input);
+      // TODO: tokens
+
+    res.json({ member: result });
+  } catch (err) {
+    console.log("Error on User login process:", err);
+
+    // Agar err biz hosil qilgan class ichidagi errolardan bolsa jsonga ogirib uni qayta jonatadi
+    if (err instanceof Errors) res.status(err.code).json(err);
+    // customized error classda mavjud bolmagan error bolsa shu qator ishlaydi
+    else res.status(Errors.standart.code).json(Errors.standart); 
+  }
+};
 
 export default memberController;
-
-
-
-

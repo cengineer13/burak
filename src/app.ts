@@ -1,9 +1,9 @@
-import express from 'express'
-import path from 'path'
-// import router from './router';
-import routerAdmin from './router-admin';
-import morgan from 'morgan';
-import { MORGAN_FORMAT } from './libs/config';
+import express from "express";
+import path from "path";
+import router from "./router";
+import routerAdmin from "./router-admin";
+import morgan from "morgan";
+import { MORGAN_FORMAT } from "./libs/config";
 
 // 1 - Kirish
 const app = express();
@@ -20,8 +20,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 // 4 - Routers
-app.use("/admin", routerAdmin);    // SSR: EJS
-// app.use("/", router);             // SPA: React
+app.use("/admin", routerAdmin); // SSR: EJS
+app.use("/", router); // SPA: React
 
 export default app;
-
