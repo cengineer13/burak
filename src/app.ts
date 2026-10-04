@@ -28,7 +28,7 @@ app.use(
     secret: String(process.env.SESSION_SECRET), // Session qurishda ishlatiladigan loyiha kodi
     cookie: {
       //doli //soat  //3
-      maxAge: 1000 * 3600 * 3, // session 3 soat davomida aktiv bo'ladi-
+      maxAge: 1000 * 3600 * 6, // session 6 soat davomida aktiv bo'ladi-
     },
     store: store, // mongodb session collectionni ekanligni sozlayapti
     resave: true, // true da - session tugash vaqti yangilanadi. qachon kirilsa shunda boshlab hisoblanadi

@@ -21,3 +21,9 @@
     - Tradional Frontend development: SSR -> masalan: EJS orqali
     - Modern Frontend development: SPA -> masalan:React or VUE JS orqali 
 */
+
+/* Coockie xusuiyatlari:
+    - request join (request body ga qoshilvoladi SID bilan)
+    - Self destroy (qanchadur vaqtdan keyin ochib ketadi)
+
+*/
