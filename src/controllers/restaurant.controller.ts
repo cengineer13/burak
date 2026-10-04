@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import MemberService from "../models/member.service";
 import { AdminRequests, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
+import { Message } from "../libs/errors";
 
 const memberService = new MemberService();
 
@@ -85,6 +86,23 @@ restaurantController.processLogin = async (
     });
   } catch (err) {
     console.log("Error on goHome:", err);
+    res.send(err);
+  }
+};
+
+restaurantController.checkAuthSession = async (
+  req: AdminRequests,
+  res: Response,
+) => {
+  try {
+    console.log("checkAuthSession");
+    if (req.session?.member)
+      res.send(
+        `<script> alert("Hi, ${req.session.member.memberNick}") </script>`,
+      );
+    else res.send(`<script> alert('${Message.NOT_AUTHENTICATED}') </script>`);
+  } catch (err) {
+    console.log("Error on checkAuthSession:", err);
     res.send(err);
   }
 };
