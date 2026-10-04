@@ -4,7 +4,6 @@ import router from "./router";
 import routerAdmin from "./router-admin";
 import morgan from "morgan";
 import { MORGAN_FORMAT } from "./libs/config";
-import dotenv from "dotenv";
 
 import session from "express-session";
 import ConnectMongoDB from "connect-mongodb-session";
@@ -12,7 +11,7 @@ import ConnectMongoDB from "connect-mongodb-session";
 const MongoDBStore = ConnectMongoDB(session);
 const store = new MongoDBStore({
   uri: String(process.env.MONGO_URL),
-  collection: "mySessions",
+  collection: "sessions",
 });
 
 // 1 - Kirish

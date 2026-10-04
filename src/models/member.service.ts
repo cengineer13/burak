@@ -6,14 +6,12 @@ import { MemberType } from "../libs/enums/member.enum";
 import * as bcrypt from "bcryptjs";
 
 class MemberService {
-  
   private readonly memberModel; //DB ni ozgartirmaslik uchun
 
   constructor() {
     this.memberModel = MemberModel;
   }
 
-  
   /** SPA */
   public async signup(input: MemberInput): Promise<Member> {
     const salt = await bcrypt.genSalt();

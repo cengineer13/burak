@@ -1,7 +1,7 @@
 import { T } from "../libs/types/common";
 import { Request, Response } from "express";
 import MemberService from "../models/member.service";
-import { LoginInput, MemberInput } from "../libs/types/member";
+import { AdminRequests, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
 
 const memberService = new MemberService();
@@ -36,7 +36,10 @@ restaurantController.getSignup = (req: Request, res: Response) => {
   }
 };
 
-restaurantController.processSignup = async (req: Request, res: Response) => {
+restaurantController.processSignup = async (
+  req: AdminRequests,
+  res: Response,
+) => {
   try {
     console.log("Process Signup");
     console.log("body:", req.body);
@@ -45,17 +48,25 @@ restaurantController.processSignup = async (req: Request, res: Response) => {
     newMember.memberType = MemberType.RESTAURANT;
 
     const result = await memberService.processSignup(newMember);
-    // TODO: Sessions
+    // Sessions - part
 
-    res.send(result);
-    console.log("Sign Up Done");
+    req.session.member = result;
+    // session succesfully browser ichidagi coockie ga sid nijoylaydi/
+    // Shuningdek DB sessions collectioniga joylab keyingi browserga response qaytaradi
+    req.session.save(function () {
+      res.send(result);
+      console.log("Sign Up Done");
+    });
   } catch (err) {
     console.log("Error Process Signup:", err);
     res.send(err);
   }
 };
 
-restaurantController.processLogin = async (req: Request, res: Response) => {
+restaurantController.processLogin = async (
+  req: AdminRequests,
+  res: Response,
+) => {
   try {
     console.log("Process Login");
     console.log("POST: input req body:", req.body);
@@ -64,9 +75,14 @@ restaurantController.processLogin = async (req: Request, res: Response) => {
 
     const memberService = new MemberService();
     const result = await memberService.processLogin(input);
-    // TODO: Sessions
 
-    res.send(result);
+    // Sessions - part
+    req.session.member = result;
+    // session succesfully browser ichidagi coockie ga sid nijoylaydi/
+    // Shuningdek DB sessions collectioniga joylab keyingi browserga response qaytaradi
+    req.session.save(function () {
+      res.send(result);
+    });
   } catch (err) {
     console.log("Error on goHome:", err);
     res.send(err);
