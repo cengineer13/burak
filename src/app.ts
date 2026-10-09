@@ -7,6 +7,7 @@ import { MORGAN_FORMAT } from "./libs/config";
 
 import session from "express-session";
 import ConnectMongoDBSession from "connect-mongodb-session";
+import { T } from "./libs/types/common";
 
 const MongoDBStore = ConnectMongoDBSession(session);
 const store = new MongoDBStore({
@@ -35,6 +36,13 @@ app.use(
     saveUninitialized: true, // false  bolsa - faqat login bolganda DB ga session yoziladi. true -da bosh bolsa ham yoziladi
   }),
 );
+
+app.use(function (req, res, next) {
+  const sessionInstance = req.session as T;
+  //res.locals - browser variable
+  res.locals.member = sessionInstance.member;
+  next();
+});
 
 // 3- Views
 app.set("views", path.join(__dirname, "views"));
