@@ -1,6 +1,7 @@
 import expres, { Request, Response } from "express";
 import restaurantController from "./controllers/restaurant.controller";
 import productController from "./controllers/product.controller";
+import makeUploader from "./libs/utils/uploader";
 const routerAdmin = expres.Router();
 
 // ** Restaurant ** /
@@ -12,7 +13,9 @@ routerAdmin
 
 routerAdmin
   .get("/signup", restaurantController.getSignup)
-  .post("/signup", restaurantController.processSignup);
+  .post("/signup", makeUploader("members").single("memberImage"),
+    restaurantController.processSignup
+  );
 
 routerAdmin.get("/logout", restaurantController.logout);
 
@@ -25,6 +28,8 @@ routerAdmin.get("/product/all",
 );
 routerAdmin.post("/product/create",
   restaurantController.verifyRestaurant,
+  makeUploader("products").array("productImages", 5), // universal
+  // uploadProductImage.single('productImage') - maxsus holat uchun
   productController.createNewProduct);
 
 routerAdmin.post("/product/:id",
@@ -32,5 +37,4 @@ routerAdmin.post("/product/:id",
   productController.updateChosenProduct);
 
 //** User */
-
 export default routerAdmin;

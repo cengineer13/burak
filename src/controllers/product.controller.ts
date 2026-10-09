@@ -26,7 +26,7 @@ productController.getAllProducts = async (req: Request, res: Response) => {
 productController.createNewProduct = async (req: Request, res: Response) => {
     try {
         console.log("createNewProduct ");
-        res.send("createNewProduct");
+        res.send("Image was uploaded sucessfully!")
     } catch (err) {
         console.log("Error on createNewProduct page", err);
 
