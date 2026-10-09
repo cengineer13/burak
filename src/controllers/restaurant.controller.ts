@@ -1,6 +1,6 @@
 import { T } from "../libs/types/common";
 import { Request, Response } from "express";
-import MemberService from "../models/member.service";
+import MemberService from "../models/Member.service";
 import { AdminRequests, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
 import Errors, { Message } from "../libs/errors";
@@ -79,7 +79,6 @@ restaurantController.processLogin = async (
 
     const input: LoginInput = req.body;
 
-    const memberService = new MemberService();
     const result = await memberService.processLogin(input);
 
     // Sessions - part

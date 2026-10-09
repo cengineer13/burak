@@ -112,4 +112,14 @@ const obj_q = { name: "BMW", year: 1994, color: "black" };
 const key_q: string = "year";
 
 const result_q = hasProperty(obj_q, key_q);
-console.log(obj_q, ` obyektida ${key_q} propertysi mavjudligi: ${result_q}`);
+console.log(obj_q, ` obyektida ${key_q} propertysi mavjudligi: ${result_q}\n`);
+
+
+console.log("============== TASK R ==============");
+console.log(`1 + 3" ko'rinishidagi stringni hisoblab number qaytarsin. Masalan: calculate("1 + 3") return 4`);
+
+function calculate(str: string) {
+  let new_array: string | number[] = [];
+
+
+}

@@ -39,5 +39,5 @@ export interface LoginInput {
 
 export interface AdminRequests extends Request {
   member: Member;
-  session: Session & { member: Member };
+  session: Session & { member: Member }; // Coockie va memberga oid malumoatlar
 }

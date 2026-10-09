@@ -1,3 +1,4 @@
+import operator
 print("============== TASK K ==============")
 print("""Berilayotgan parametr tarkibida nechta unli harf bor ekanligini aniqlovchi function tuzing.
 Masalan: countVowels("string") return 1
@@ -75,6 +76,7 @@ print("""Array ichidagi har xil qiymatlardan faqat sonlar yig'indisini hisoblab 
 Masalan: calculateSumOfNumbers([10, "10", {son: 10}, true, 35]) return 45
 """)
 
+
 def calculateSumOfNumbers(array):
     sum = 0
     for i in array:
@@ -93,8 +95,10 @@ print("""Objectni nested array sifatida convert qilib qaytarsin.
 Masalan: objectToArray({a: 10, b: 20}) return [["a", 10], ["b", 20]]
 """)
 
+
 def objectToArray(obj):
     return [[key, value] for key, value in obj.items()]
+
 
 obj_p = {"a": 10, "b": 20}
 result_p = objectToArray(obj_p)
@@ -106,6 +110,7 @@ print("""Objectda berilgan string propertysi borligini tekshirsin.
 Masalan: hasProperty({name: "BMW"}, "name") return true
 """)
 
+
 def hasProperty(obj, key):
     return key in obj
 
@@ -116,3 +121,48 @@ key_q = "name"
 result_q = hasProperty(obj_q, key_q)
 
 print(f"{obj_q} obyektida '{key_q}' {'mavjud' if result_q else 'mavjud emas'}!\n")
+
+
+print("============== TASK R ==============")
+print(""""1 + 3" ko'rinishidagi stringni hisoblab number qaytarsin. Masalan: calculate("1 + 3") return 4""")
+
+
+def calculate(string):
+    new_array = []
+    for i in string:
+        try:
+            new_array.append(int(i))
+        except:
+            if i in ["*", "/", "-", "+"]:
+                new_array.append(i)
+
+    if new_array[1] == "*":
+        return new_array[0] * new_array[2]
+    elif new_array[1] == "/" and new_array[2] != 0:
+        return new_array[0] / new_array[2]
+    elif new_array[1] == "+":
+        return new_array[0] + new_array[2]
+    elif new_array[1] == "-":
+        return new_array[0] + new_array[2]
+    else:
+        print("Amal notog'ri")
+
+
+string = "1 + 4"
+result_r = calculate(string)
+print(f'{string} stringni hisoblasak = {result_r}\n')
+
+print("============== TASK S ==============")
+print("""Array ichidagi tushib qolgan sonni topib qaytarsin.
+Masalan: missingNumber([3, 0, 1]) return 2""")
+
+
+def missingNumber(array: list):
+    start = min(array)
+    end = max(array)
+    return [i for i in range(start, end) if i not in array]
+
+
+array_s = [1, 0, 2, 8]
+result_s = missingNumber(array_s)
+print(f'{array_s} array oraliqda tushib qolgan son(lar) {result_s}\n')

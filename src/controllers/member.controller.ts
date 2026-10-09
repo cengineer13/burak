@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { T } from "../libs/types/common";
 import { MemberInput, LoginInput, Member } from "../libs/types/member";
-import MemberService from "../models/member.service";
+import MemberService from "../models/Member.service";
 import Errors from "../libs/errors";
 
 // Front End - React uchun
@@ -16,16 +16,16 @@ memberController.signup = async (req: Request, res: Response) => {
 
     const input: MemberInput = req.body,
       result: Member = await memberService.signup(input);
-      // TODO: tokens
-    
+    // TODO: tokens
+
     res.json({ member: result });
   } catch (err) {
     console.log("Error on User signup Process:", err);
-  
+
     // Agar err biz hosil qilgan class ichidagi errolardan bolsa jsonga ogirib uni qayta jonatadi
     if (err instanceof Errors) res.status(err.code).json(err);
     // customized error classda mavjud bolmagan error bolsa shu qator ishlaydi
-    else res.status(Errors.standart.code).json(Errors.standart); 
+    else res.status(Errors.standart.code).json(Errors.standart);
   }
 };
 
@@ -36,7 +36,7 @@ memberController.login = async (req: Request, res: Response) => {
 
     const input: LoginInput = req.body,
       result = await memberService.login(input);
-      // TODO: tokens
+    // TODO: tokens
 
     res.json({ member: result });
   } catch (err) {
@@ -45,7 +45,7 @@ memberController.login = async (req: Request, res: Response) => {
     // Agar err biz hosil qilgan class ichidagi errolardan bolsa jsonga ogirib uni qayta jonatadi
     if (err instanceof Errors) res.status(err.code).json(err);
     // customized error classda mavjud bolmagan error bolsa shu qator ishlaydi
-    else res.status(Errors.standart.code).json(Errors.standart); 
+    else res.status(Errors.standart.code).json(Errors.standart);
   }
 };
 

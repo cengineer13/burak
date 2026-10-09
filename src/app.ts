@@ -6,9 +6,9 @@ import morgan from "morgan";
 import { MORGAN_FORMAT } from "./libs/config";
 
 import session from "express-session";
-import ConnectMongoDB from "connect-mongodb-session";
+import ConnectMongoDBSession from "connect-mongodb-session";
 
-const MongoDBStore = ConnectMongoDB(session);
+const MongoDBStore = ConnectMongoDBSession(session);
 const store = new MongoDBStore({
   uri: String(process.env.MONGO_URL),
   collection: "sessions",
@@ -27,12 +27,12 @@ app.use(
   session({
     secret: String(process.env.SESSION_SECRET), // Session qurishda ishlatiladigan loyiha kodi
     cookie: {
-      //doli //soat  //3
+      //doli //soat  //3    // 60,000 = 1 minut
       maxAge: 1000 * 3600 * 6, // session 6 soat davomida aktiv bo'ladi-
     },
-    store: store, // mongodb session collectionni ekanligni sozlayapti
+    store: store, // sessionnni mongo db ga saqlashni korsatilyapti mongodb-session obyekti orqali
     resave: true, // true da - session tugash vaqti yangilanadi. qachon kirilsa shunda boshlab hisoblanadi
-    saveUninitialized: true,
+    saveUninitialized: true, // false  bolsa - faqat login bolganda DB ga session yoziladi. true -da bosh bolsa ham yoziladi
   }),
 );
 
