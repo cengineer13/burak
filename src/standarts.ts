@@ -27,3 +27,11 @@
     - Self destroy (qanchadur vaqtdan keyin ochib ketadi)
 
 */
+
+
+/* Validations: 
+    - FrontEnd validation
+    - Pipe validation - Front va Back orasida
+    - Backend validation
+    -Databse validation
+*/
