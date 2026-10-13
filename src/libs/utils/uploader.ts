@@ -14,7 +14,7 @@ function getTargetImageStore(adress: any) {
             // path orqali fayl nomini ext ni olyapmiz m: .jpg, .pdf kabi
             const extension = path.parse(file.originalname).ext;
             const random_name = v4() + extension; // nomiga random nom berib ext ni qoshyapmiz. 
-            cb(null, random_name);
+            cb(null, `${file.originalname}_${random_name}`);
         },
     });
 };
@@ -28,23 +28,5 @@ export default makeUploader;
 
 
 
-/*
-const product_storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './uploads/products');
-    },
-    filename: function (req, file, cb) {
-        console.log(file);
-        // path orqali fayl nomini ext ni olyapmiz m: .jpg, .pdf kabi
-        const extension = path.parse(file.originalname).ext;
-        const random_name = v4() + extension; // nomiga random nom berib ext ni qoshyapmiz. 
-        cb(null, random_name);
-    },
-});
-
-
-export const uploadProductImage = multer({ storage: product_storage });
-
-*/
 
 
