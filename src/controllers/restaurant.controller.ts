@@ -3,7 +3,8 @@ import { NextFunction, Request, Response } from "express";
 import MemberService from "../models/Member.service";
 import { AdminRequests, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
-import Errors, { Message } from "../libs/errors";
+import Errors, { HttpCode, Message } from "../libs/errors";
+import path from "path";
 
 const memberService = new MemberService();
 
@@ -45,19 +46,22 @@ restaurantController.processSignup = async (
 ) => {
   try {
     console.log("Process Signup");
-    console.log("body:", req.body);
-
+    // Requestdan file ni olish 
+    const file = req.file;
+    if (!file) throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
+    //Yangi member hosil qilish
     const newMember: MemberInput = req.body;
+    newMember.memberImage = file?.path;
     newMember.memberType = MemberType.RESTAURANT;
+    console.log("file:", file)
 
     const result = await memberService.processSignup(newMember);
     // Sessions - part
-
     req.session.member = result;
     // session succesfully browser ichidagi coockie ga sid nijoylaydi/
     // Shuningdek DB sessions collectioniga joylab keyingi browserga response qaytaradi
     req.session.save(function () {
-      res.send(result);
+      res.redirect("/admin/product/all")
       console.log("Sign Up Done");
     });
   } catch (err) {
@@ -84,7 +88,7 @@ restaurantController.processLogin = async (
     // Sessions - part
     req.session.member = result;
     req.session.save(function () {
-      res.send(result);
+      res.redirect("/admin/product/all");
     });
   } catch (err) {
     console.log("Error on Process Login:", err);
