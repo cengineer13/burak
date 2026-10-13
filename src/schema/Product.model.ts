@@ -10,7 +10,7 @@ const productScheme = new Schema({
         default: ProductStatus.PAUSE,
     },
 
-    ProductCollection: {
+    productCollection: {
         type: String,
         enum: ProductCollection,
         required: true,
@@ -37,14 +37,13 @@ const productScheme = new Schema({
         default: ProductSize.NORMAL,
     },
     productVolume: {
-        type: String,
+        type: Number,
         enum: ProductVolume,
         default: ProductVolume.ONE,
     },
 
     productDesc: {
         type: String,
-        required: true,
     },
 
     productImages: {
@@ -52,7 +51,7 @@ const productScheme = new Schema({
         default: [],
     },
 
-    productView: {
+    productViews: {
         type: Number,
         default: 0,
     },

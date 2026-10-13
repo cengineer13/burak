@@ -51,7 +51,7 @@ restaurantController.processSignup = async (
     if (!file) throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
     //Yangi member hosil qilish
     const newMember: MemberInput = req.body;
-    newMember.memberImage = file?.path;
+    newMember.memberImage = file?.path.replace(/\\/g, '/');;
     newMember.memberType = MemberType.RESTAURANT;
     console.log("file:", file)
 

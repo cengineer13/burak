@@ -40,4 +40,6 @@ export interface LoginInput {
 export interface AdminRequests extends Request {
   member: Member;
   session: Session & { member: Member }; // Coockie va memberga oid malumoatlar
+  file: Express.Multer.File;
+  files: Express.Multer.File[];
 }
