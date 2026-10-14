@@ -11,12 +11,13 @@ const productService = new ProductService();
 const productController: T = {};
 /** SPA */
 
-
 /** SSR */
 productController.getAllProducts = async (req: Request, res: Response) => {
     try {
-        console.log("getAllProducts ");
-        res.render("products")
+        console.log("getAllProducts Page");
+        const data = await productService.getAllProducts();
+        console.log("getall dan kirib kelgan data:", data);
+        res.render("products", { products: data })
     } catch (err) {
         console.log("Error on getAllProducts page", err);
 
@@ -61,7 +62,7 @@ productController.updateChosenProduct = async (req: Request, res: Response) => {
         console.log("Berilayotgan ID:", id);
 
         const result = await productService.updateChosenProduct(id, req.body);
-        console.log("Ma'lumot update bo'ldi:", result)
+        console.log("Ma'lumot update bo'ldi:", result);
         res.send(result);
     } catch (err) {
         console.log("Error on updateChosenProduct page", err);

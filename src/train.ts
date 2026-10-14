@@ -116,10 +116,62 @@ console.log(obj_q, ` obyektida ${key_q} propertysi mavjudligi: ${result_q}\n`);
 
 
 console.log("============== TASK R ==============");
-console.log(`1 + 3" ko'rinishidagi stringni hisoblab number qaytarsin. Masalan: calculate("1 + 3") return 4`);
+console.log(`"1 + 3" ko'rinishidagi stringni hisoblab number qaytarsin. Masalan: calculate("1 + 3") return 4`);
 
-function calculate(str: string) {
-  let new_array: string | number[] = [];
+function calculate(str: string): number | null {
+  const operator = str[1];
+  const num1 = Number(str[0]);
+  const num2 = Number(str[2]);
 
+  switch (operator) {
+    case "+":
+      return num1 + num2;
+    case "-":
+      return num1 - num2;
+    case "*":
+      return num1 * num2;
+    case "/":
+      if (num2 === 0) {
+        console.log("0 ga bo'lish mumkin emas");
+        return null;
+      }
+      return num1 / num2;
+    default:
+      console.log("Amal noto'g'ri");
+      return null;
+
+  }
 
 }
+const result_r = calculate("2+3");
+console.log(` "2 + 3" string jo'natilganda natija: ${result_r} \n`);
+
+console.log("============== TASK S ==============");
+console.log(`Array ichidagi tushib qolgan sonni topib qaytarsin.
+Masalan: missingNumber([3, 0, 1]) return 2`);
+
+const missingNumber = (arr: number[]) => {
+  const start = Math.min(...arr);
+  const end = Math.max(...arr);
+  let new_arr: number[] = []
+  for (let i = start; i < end; i++) {
+    if (!arr.includes(i)) new_arr.push(i);
+  }
+  return new_arr;
+};
+
+const array_s = [0, 5, 2, 8];
+const result_s = missingNumber(array_s);
+console.log(array_s, ` massiv sonlar orasida tushib qolgan sonlar: ${result_s}\n`);
+
+console.log("============== TASK T ==============");
+console.log(`Ikkita arrayni qabul qilib, ularni birlashtirib tartiblangan holda qaytarsin.
+Masalan: mergeSortedArrays([0, 3, 4], [4, 6]) return [0, 3, 4, 4, 6]`);
+
+function mergeSortedArrays(arr1: number[], arr2: number[]) {
+  return arr1.concat(arr2).sort();
+}
+const arr_1 = [0, 7, 3, 4];
+const arr_2 = [4, 6];
+const result_t = mergeSortedArrays([0, 7, 3, 4], [4, 6]);
+console.log(arr_1, " bilan ", arr_2, `arraylar birlashtirilib tartiblandi. Natija:`, result_t, `\n`);

@@ -143,7 +143,7 @@ def calculate(string):
     elif new_array[1] == "+":
         return new_array[0] + new_array[2]
     elif new_array[1] == "-":
-        return new_array[0] + new_array[2]
+        return new_array[0] - new_array[2]
     else:
         print("Amal notog'ri")
 
@@ -163,6 +163,21 @@ def missingNumber(array: list):
     return [i for i in range(start, end) if i not in array]
 
 
-array_s = [1, 0, 2, 8]
+array_s = [0, 5, 2, 8]
 result_s = missingNumber(array_s)
 print(f'{array_s} array oraliqda tushib qolgan son(lar) {result_s}\n')
+
+
+print("============== TASK T ==============")
+print("""Ikkita arrayni qabul qilib, ularni birlashtirib tartiblangan holda qaytarsin.
+      Masalan: mergeSortedArrays([0, 3, 4], [4, 6]) return [0, 3, 4, 4, 6]""")
+
+
+def mergeSortedArrays(array1: list, array2: list):
+    return sorted(array1 + array2)
+
+
+array_1 = [0, 3, 4]
+array_2 = [4, 6]
+result_t = mergeSortedArrays(array_1, array_2)
+print(f'{array_1}  va {array_2} arraylar birlashtirilib tartiblandi. Natija: {result_t}\n')

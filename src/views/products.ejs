@@ -4,7 +4,14 @@
     <body>
         <div> PRODUCT PAGE</div>
         <div>
-            <%= member.memberNick %>
+            <!--member - Express dan authentifikatsiyadan o'tgan kelgan local variable-->
+            <h1>Foydalanuvchi :<%= member.memberNick %>
+            </h1>
+            <% products.map(function (key, value) { %>
+                <p>
+                    <%= key.productName %> - <%= key.productSize %>
+                </p>
+                <% }) %>
         </div>
     </body>
 
