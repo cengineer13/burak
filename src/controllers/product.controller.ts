@@ -43,14 +43,14 @@ productController.createNewProduct = async (req: AdminRequests, res: Response) =
 
         await productService.createNewProduct(data);
         res.send(
-            `<script> alert('sucessfully created'); window.location.replace('/product/all')</script>`
+            `<script> alert('sucessfully created'); window.location.replace('/admin/product/all')</script>`
         );
 
     } catch (err) {
         console.log("Error on createNewProduct page", err);
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
         res.send(
-            `<script> alert(${message}); window.location.replace('admin/product/all')</script>`
+            `<script> alert('${message}'); window.location.replace('admin/product/all')</script>`
         );
     }
 };

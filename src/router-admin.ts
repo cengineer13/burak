@@ -1,8 +1,8 @@
-import expres, { Request, Response } from "express";
+import express, { Request, Response } from "express";
 import restaurantController from "./controllers/restaurant.controller";
 import productController from "./controllers/product.controller";
 import makeUploader from "./libs/utils/uploader";
-const routerAdmin = expres.Router();
+const routerAdmin = express.Router();
 
 // ** Restaurant ** /
 routerAdmin.get("/", restaurantController.goHome);
