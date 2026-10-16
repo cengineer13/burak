@@ -146,14 +146,18 @@ restaurantController.getUsers = async (req: Request, res: Response) => {
   }
 };
 
-restaurantController.updateChosenUser = (req: Request, res: Response) => {
+restaurantController.updateChosenUser = async (req: Request, res: Response) => {
   try {
     console.log("updateChosenUser page");
-
-    res.render("users");
-
+    const result = await memberService.updateChosenUser(req.body);
+    res.status(HttpCode.OK).json({ data: result })
   } catch (err) {
     console.log("Error on updateChosenUser:", err);
+    // Agar err biz hosil qilgan class ichidagi errolardan bir bolsa jsonga ogirib uni qayta jonatadi
+    if (err instanceof Errors) res.status(err.code).json(err);
+    // customized error classda mavjud bolmagan error bolsa standart errorni yuboradi
+    else res.status(Errors.standart.code).json(Errors.standart);
+
   }
 };
 

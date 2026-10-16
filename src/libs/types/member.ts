@@ -3,19 +3,6 @@ import { MemberStatus, MemberType } from "../enums/member.enum";
 import { Request } from "express";
 import { Session } from "express-session";
 
-// Sign Up uchun member Type
-export interface MemberInput {
-  memberType?: MemberType;
-  memberStatus?: MemberStatus;
-  memberNick: string;
-  memberPhone: string;
-  memberPassword: string;
-  memberAddress?: string;
-  memberDesc?: string;
-  memberImage?: string;
-  memberPoints?: number;
-}
-
 // bazadan
 export interface Member {
   _id: ObjectId;
@@ -32,10 +19,34 @@ export interface Member {
   updatedAt: Date;
 }
 
+// Sign Up uchun member Type
+export interface MemberInput {
+  memberType?: MemberType;
+  memberStatus?: MemberStatus;
+  memberNick: string;
+  memberPhone: string;
+  memberPassword: string;
+  memberAddress?: string;
+  memberDesc?: string;
+  memberImage?: string;
+  memberPoints?: number;
+}
+export interface MemberUpdateInput {
+  _id: ObjectId;
+  memberStatus?: MemberStatus;
+  memberNick?: string;
+  memberPhone?: string;
+  memberPassword?: string;
+  memberAddress?: string;
+  memberDesc?: string;
+  memberImage?: string;
+}
+
 export interface LoginInput {
   memberNick: string;
   memberPassword: string;
 }
+
 
 export interface AdminRequests extends Request {
   member: Member;
