@@ -1,42 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f7f5f0;
+  color: #2d2621;
+  overflow-x: hidden;
+}
+
+/* ── Asosiy Fon Konteyneri (Warm Cream & Vanilla) ── */
 .products-container {
   position: relative;
-  width: auto;
-  height: auto;
-  min-height: 100%;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(-45deg, #110303bf, #e37813, #011c1aba, #968383);
+  background: radial-gradient(circle at 50% 15%, #ffffff 0%, #f3ede2 50%, #e6ddce 100%);
+  padding-bottom: 60px;
 }
 
 .products-container a {
   text-decoration: none;
-  color: #000000;
+  color: #524436;
+  transition: all 0.3s ease;
+}
+
+/* ── Navigatsiya Menyu ── */
+.products-container .navigation-menu {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  padding: 25px 0 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.products-container .navigation-menu .nav {
+  display: flex;
+  gap: 15px;
 }
 
 .products-container .nav-item a {
-  color: #e3c08d;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #6d5b45 !important;
+  padding: 8px 18px !important;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid #e2d7c5;
+  transition: all 0.3s ease;
+}
+
+.products-container .nav-item a:hover {
+  color: #ffffff !important;
+  background: #c99839;
+  border-color: #c99839;
+  box-shadow: 0 4px 12px rgba(201, 152, 57, 0.25);
+}
+
+.products-container .nav-item a.active {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #c99839 0%, #aa7721 100%);
+  border-color: #aa7721;
 }
 
 .products-container .nav-item a.disabled {
-  color: #898071;
+  color: #b5aa99 !important;
 }
 
-.products-container .navigation-menu {
-  position: absolute;
-  z-index: 10000;
-  top: 1%;
-  color: #efefee;
-  font-size: 40px;
-  font-family: monospace;
-}
-
+/* ── Asosiy Karta Qismi (Board) ── */
 .products-container .restaurant-menu-frame {
   position: relative;
-  padding-bottom: 80px;
   width: 100%;
-  height: auto;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,274 +87,315 @@
 
 .products-container .restaurant-menu-frame .board {
   position: relative;
-  margin-top: 100px;
-  width: 1320px;
-  height: auto;
+  margin-top: 30px;
+  width: 92%;
+  max-width: 1280px;
+  background: #ffffff;
+  border: 1px solid #e8e2d5;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 15px 45px rgba(110, 85, 55, 0.08), 0 2px 10px rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* ── Sarlavhalar ── */
+.products-container .new-dish-txt {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: #231c16;
+  text-transform: uppercase;
+  border-bottom: 2px solid #e8decb;
+  padding-bottom: 8px;
+}
+
+/* ── Jadval Stillari (Table) ── */
 .products-container .board .dishes-table {
   position: relative;
   width: 100%;
-  height: auto;
-  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.products-container .board .dish-container {
-  position: relative;
-  margin-top: 20px;
+.products-container table {
   width: 100%;
-  height: auto;
-
-  /* TODO: UNCOMMENT */
-  /*display: none;*/
-  flex-direction: column;
-  align-items: center;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #ebd8bf;
+  margin-top: 15px;
 }
 
-.products-container .new-dish-txt {
-  font-family: "Source Serif Pro";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 30px;
-  line-height: 25px;
-  color: #ffffff;
+.products-container table thead tr {
+  background: #fbf8f3;
+}
+
+.products-container table th {
+  padding: 14px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #635340;
+  border-bottom: 1.5px solid #ebd8bf;
+  border-right: 1px solid #f0e6d8;
+}
+
+.products-container table tbody td {
+  padding: 14px 10px;
+  font-size: 14px;
+  color: #382e25;
+  border-bottom: 1px solid #f3ece1;
+  border-right: 1px solid #f3ece1;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.products-container table tbody tr:hover {
+  background-color: #faf7f2;
+}
+
+/* Status Select */
+.products-container .spec-select {
+  padding: 4px 12px;
+  height: 34px;
+  background: #ffffff;
+  border: 1.5px solid #e0d4c1;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5c4c3b;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.products-container .spec-select:focus {
+  border-color: #c99839;
+  box-shadow: 0 0 0 3px rgba(201, 152, 57, 0.15);
+}
+
+/* ── Yangi Mahsulot Forma Qismi (dish-container) ── */
+.products-container .board .dish-container {
+  position: relative;
+  margin-top: 35px;
+  padding-top: 30px;
+  border-top: 2px dashed #ebd8bf;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .products-container .long-input {
   position: relative;
-  margin-top: 25px;
+  margin-top: 20px;
   width: 100%;
-  height: auto;
   display: flex;
   flex-direction: column;
-}
-
-.products-container .long-input label {
-  font-family: "Source Serif Pro";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 25px;
-  color: #ffffff;
-}
-
-.products-container .long-input input {
-  position: relative;
-  margin-top: 10px;
-  padding-left: 20px;
-  width: 100%;
-  height: 54px;
-  border: none;
-  background: #f7f7f7;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  font-family: "GT Walsheim Pro";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 26px;
-  color: #4f547b;
-}
-
-.products-container .long-input textarea {
-  position: relative;
-  margin-top: 10px;
-  padding: 20px;
-  width: 100%;
-  height: 200px;
-  border: none;
-  background: #f7f7f7;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  font-family: "GT Walsheim Pro";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 26px;
-  color: #4f547b;
-}
-
-.products-container .half-input select {
-  position: relative;
-  margin-top: 10px;
-  padding: 0px 20px;
-  width: 100%;
-  height: 55px;
-  display: flex;
-  border: none;
-  background: #f7f7f7;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  font-family: "GT Walsheim Pro";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 26px;
-  color: #4f547b;
-}
-
-.products-container select:focus {
-  min-width: 100%;
-  width: auto;
-}
-
-.products-container .long-input select {
-  position: relative;
-  margin-top: 10px;
-  padding: 0px 20px;
-  width: 100%;
-  height: 55px;
-  display: flex;
-  border: none;
-  background: #f7f7f7;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  font-family: "GT Walsheim Pro";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 26px;
-  color: #4f547b;
 }
 
 .products-container .dish-container .half-input-frame {
   position: relative;
-  margin-top: 25px;
+  margin-top: 15px;
   width: 100%;
-  height: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .products-container .half-input-frame .half-input {
   position: relative;
-  width: 49%;
-  height: auto;
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.products-container .half-input label {
-  font-family: "Source Serif Pro";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 25px;
-  color: #ffffff;
+/* Labellar */
+.products-container .long-input label,
+.products-container .half-input label,
+.products-container .img-frame label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #615547;
+  margin-bottom: 6px;
 }
 
-.products-container .half-input input {
-  position: relative;
-  margin-top: 10px;
-  padding-left: 20px;
+/* Inputlar, Selectlar va Textarea */
+.products-container .long-input input,
+.products-container .half-input input,
+.products-container .long-input select,
+.products-container .half-input select,
+.products-container .long-input textarea {
   width: 100%;
-  height: 54px;
-  border: none;
-  background: #f7f7f7;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
+  background: #faf8f5;
+  border: 1.5px solid #e5dfd5;
+  border-radius: 10px;
+  color: #2d2621;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: none;
+}
+
+.products-container .long-input input,
+.products-container .half-input input,
+.products-container .long-input select,
+.products-container .half-input select {
+  height: 48px;
+  padding: 0 16px;
+}
+
+.products-container .long-input textarea {
+  height: 120px;
+  padding: 14px 16px;
+  resize: vertical;
+}
+
+.products-container .long-input input:focus,
+.products-container .half-input input:focus,
+.products-container .long-input select:focus,
+.products-container .half-input select:focus,
+.products-container .long-input textarea:focus {
+  border-color: #c99839;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(201, 152, 57, 0.12);
+}
+
+.products-container .long-input input::placeholder,
+.products-container .half-input input::placeholder {
+  color: #ada395;
+}
+
+/* ── Rasmlar bo'limi (media-frame) ── */
+.products-container .img-frame {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
 }
 
 .products-container .media-frame {
   position: relative;
   margin-top: 10px;
   width: 100%;
-  height: 250px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 15px;
 }
 
 .products-container .media-frame .upload-img-box {
   position: relative;
-  width: 19%;
-  height: 100%;
+  flex: 1;
+  height: 140px;
+  background: #faf8f5;
+  border: 1.5px dashed #d9cfbe;
+  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
   cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.products-container .media-frame .upload-img-box:hover {
+  border-color: #c99839;
+  background: #fbf9f4;
 }
 
 .products-container .upload-img-box img {
-  position: relative;
   width: 100%;
   height: 100%;
-  display: block;
+  object-fit: cover;
   border-radius: 10px;
-}
-
-.products-container .img-frame {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.products-container .img-frame label {
-  margin-top: 30px;
-  font-family: "Source Serif Pro";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 25px;
-  color: #ffffff;
 }
 
 .products-container #file {
-  opacity: 0;
-  border: none;
-  border-radius: 10px;
-  background: grey;
   position: absolute;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 100%;
-  top: 0px;
   height: 100%;
+  opacity: 0;
   cursor: pointer;
 }
 
+/* ── Operatsiya tugmalari (Buttons) ── */
 .products-container .operation-buttons {
-  margin-top: 20px;
+  margin-top: 35px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
 }
 
-.products-container .spec-select {
-  position: relative;
-  padding: 0px 7px;
-  height: 27px;
-  background: #ffffff;
-  border: 1px solid #dddddd;
-  border-radius: 8px;
-  font-family: "GT Walsheim Pro";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 26px;
-  color: #4f547b;
+/* Asosiy Oltin/Karamel tugmalar (New Product, Create) */
+.products-container #process-btn,
+.products-container #create-btn {
+  height: 46px;
+  padding: 0 28px;
+  background: linear-gradient(135deg, #c99839 0%, #aa7721 100%);
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(189, 137, 43, 0.28);
 }
 
-.products-container table td,
-table th {
-  text-align: center;
-  vertical-align: middle;
+.products-container #process-btn:hover,
+.products-container #create-btn:hover {
+  background: linear-gradient(135deg, #d9a745 0%, #be872a 100%);
+  box-shadow: 0 8px 20px rgba(189, 137, 43, 0.38);
+  transform: translateY(-2px);
 }
 
+/* Bekor qilish tugmasi (Cancel) */
+.products-container #cancel-btn {
+  height: 46px;
+  padding: 0 26px;
+  background: #f0eae1;
+  border: 1px solid #d9cdbd;
+  border-radius: 10px;
+  color: #7a6a57;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.products-container #cancel-btn:hover {
+  background: #e85d54;
+  border-color: #e85d54;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ── Switcher ── */
 .products-container .switch {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 20px;
+  width: 44px;
+  height: 22px;
 }
 
 .products-container .switch input {
@@ -327,41 +411,54 @@ table th {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  background-color: #d1c7b8;
+  transition: 0.3s;
 }
 
 .products-container .slider:before {
   position: absolute;
   content: "";
-  height: 14px;
-  width: 14px;
-  left: 6px;
-  bottom: 3.5px;
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
   background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  transition: 0.3s;
 }
 
-.products-container input:checked + .slider {
-  background-color: #2196f3;
+.products-container input:checked+.slider {
+  background-color: #c99839;
 }
 
-.products-container input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
-}
-
-.products-container input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+.products-container input:checked+.slider:before {
+  transform: translateX(22px);
 }
 
 .products-container .slider.round {
-  border-radius: 34px;
+  border-radius: 20px;
 }
 
 .products-container .slider.round:before {
   border-radius: 50%;
+}
+
+/* ── Moslashuvchanlik (Responsive) ── */
+@media (max-width: 900px) {
+  .products-container .restaurant-menu-frame .board {
+    width: 96%;
+    padding: 20px 15px;
+  }
+
+  .products-container .half-input-frame {
+    flex-direction: column !important;
+    gap: 12px;
+  }
+
+  .products-container .media-frame {
+    flex-wrap: wrap;
+  }
+
+  .products-container .media-frame .upload-img-box {
+    min-width: 45%;
+  }
 }

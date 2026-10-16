@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anime.js Sinovi</title>
+    <style>
+        .quti {
+            width: 80px;
+            height: 80px;
+            background-color: #3498db;
+            border-radius: 8px;
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quti"></div>
+
+    <!-- CDN orqali kutubxonani ulash -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+
+    <script>
+        anime({
+            targets: '.quti',
+            translateX: 250,       // O'ngga 250px surish
+            rotate: '1turn',       // 360 daraja aylantirish
+            backgroundColor: '#e74c3c', // Rangni o'zgartirish
+            borderRadius: ['8px', '50%'], // Aylanaga aylantirish
+            duration: 2000,        // 2 soniya davom etishi
+            easing: 'easeInOutQuad',
+            direction: 'alternate',// Orqaga qaytishi
+            loop: true             // Cheksiz takrorlash
+        });
+    </script>
+</body>
+
+</html>
