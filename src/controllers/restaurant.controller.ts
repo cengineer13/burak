@@ -80,7 +80,7 @@ restaurantController.processLogin = async (
 ) => {
   try {
     console.log("Process Login");
-    console.log('req body:', req.body);
+
 
     const input: LoginInput = req.body;
 
@@ -131,6 +131,33 @@ restaurantController.checkAuthSession = async (
   }
 };
 
+/**USERS */
+restaurantController.getUsers = async (req: Request, res: Response) => {
+  try {
+    console.log("getUsers page");
+    const result = await memberService.getUsers();
+    console.log(result);
+
+    res.render("users", { users: result });
+
+  } catch (err) {
+    console.log("Error on getUsers:", err);
+    res.redirect("/admin/login")
+  }
+};
+
+restaurantController.updateChosenUser = (req: Request, res: Response) => {
+  try {
+    console.log("updateChosenUser page");
+
+    res.render("users");
+
+  } catch (err) {
+    console.log("Error on updateChosenUser:", err);
+  }
+};
+
+
 restaurantController.verifyRestaurant = (
   req: AdminRequests,
   res: Response,
@@ -148,16 +175,6 @@ restaurantController.verifyRestaurant = (
 };
 
 
-restaurantController.getUserAll = (req: Request, res: Response) => {
-  try {
-    console.log("getUserAll page");
-
-    res.render("users");
-
-  } catch (err) {
-    console.log("Error on getUserAll:", err);
-  }
-};
 
 
 export default restaurantController;

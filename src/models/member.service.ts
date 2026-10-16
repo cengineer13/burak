@@ -79,6 +79,7 @@ class MemberService {
     }
   }
 
+  // Logindan otish
   public async processLogin(input: LoginInput): Promise<Member> {
     // member hosil qilib Schme modeldan DB ichidan qidiramiz
     const member = await this.memberModel
@@ -104,6 +105,19 @@ class MemberService {
     console.log("Tizimga muvaffaqiyatli login bo'lindi!");
     return await this.memberModel.findById(member._id).exec();
   }
+
+  // Userlarni olish
+  public async getUsers(): Promise<Member[]> {
+    const result = await this.memberModel
+      .find({ memberType: MemberType.USER })
+      .exec();
+
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    return result;
+
+
+  }
+
 }
 
 export default MemberService;
