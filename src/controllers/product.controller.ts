@@ -16,7 +16,7 @@ productController.getAllProducts = async (req: Request, res: Response) => {
     try {
         console.log("getAllProducts Page");
         const data = await productService.getAllProducts();
-        console.log("getall dan kirib kelgan data:", data);
+        // console.log("getall dan kirib kelgan data:", data);
         res.render("products", { products: data })
     } catch (err) {
         console.log("Error on getAllProducts page", err);

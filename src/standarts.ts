@@ -12,7 +12,7 @@
 */
 
 /* API TURLARI 
-- Tradional API
+- Traditional API (form elementi orqali qilinadigan API)
 - Rest API 
 - GraphQl API
 */

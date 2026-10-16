@@ -69,7 +69,7 @@ restaurantController.processSignup = async (
     const message =
       err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
     res.send(
-      `<script> alert("${message}"); window.location.replace('admin/signup') </script>`,
+      `<script> alert("${message}"); window.location.replace('/admin/signup') </script>`,
     );
   }
 };
@@ -80,6 +80,7 @@ restaurantController.processLogin = async (
 ) => {
   try {
     console.log("Process Login");
+    console.log('req body:', req.body);
 
     const input: LoginInput = req.body;
 
@@ -95,7 +96,7 @@ restaurantController.processLogin = async (
     const message =
       err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
     res.send(
-      `<script> alert("${message}"); window.location.replace('admin/login') </script>`,
+      `<script> alert("${message}"); window.location.replace('/admin/login') </script>`,
     );
   }
 };
@@ -143,6 +144,18 @@ restaurantController.verifyRestaurant = (
     const message = Message.NOT_AUTHENTICATED
     res.send(
       `<script> alert('${message}'); window.location.replace('/admin/login')</script>`);
+  }
+};
+
+
+restaurantController.getUserAll = (req: Request, res: Response) => {
+  try {
+    console.log("getUserAll page");
+
+    res.render("users");
+
+  } catch (err) {
+    console.log("Error on getUserAll:", err);
   }
 };
 
