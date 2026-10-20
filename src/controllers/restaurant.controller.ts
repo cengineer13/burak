@@ -46,6 +46,7 @@ restaurantController.processSignup = async (
 ) => {
   try {
     console.log("Process Signup");
+    console.log("req.bodylar", req.body)
     // Requestdan file ni olish 
     const file = req.file;
     if (!file) throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
@@ -150,7 +151,8 @@ restaurantController.updateChosenUser = async (req: Request, res: Response) => {
   try {
     console.log("updateChosenUser page");
     const result = await memberService.updateChosenUser(req.body);
-    res.status(HttpCode.OK).json({ data: result })
+    res.status(HttpCode.OK).json({ data: result });
+
   } catch (err) {
     console.log("Error on updateChosenUser:", err);
     // Agar err biz hosil qilgan class ichidagi errolardan bir bolsa jsonga ogirib uni qayta jonatadi
@@ -177,8 +179,6 @@ restaurantController.verifyRestaurant = (
       `<script> alert('${message}'); window.location.replace('/admin/login')</script>`);
   }
 };
-
-
 
 
 export default restaurantController;
