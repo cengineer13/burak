@@ -175,3 +175,20 @@ const arr_1 = [0, 7, 3, 4];
 const arr_2 = [4, 6];
 const result_t = mergeSortedArrays([0, 7, 3, 4], [4, 6]);
 console.log(arr_1, " bilan ", arr_2, `arraylar birlashtirilib tartiblandi. Natija:`, result_t, `\n`);
+
+
+console.log("============== TASK V ==============");
+console.log(`Stringdagi har bir harf necha marta takrorlanganini object sifatida qaytarsin.
+Masalan: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}\n`);
+
+
+function countChars(text:string): Record<string, number> {
+  const newObj: Record<string, number> = {};
+  for (const letter of text) {
+    newObj[letter] = (newObj[letter] ?? 0) + 1   
+  }
+  return newObj
+}
+const string_v = "hello";
+const result_v = countChars(string_v);
+console.log(string_v, "so'zida harflarning takrorlanish soni ", result_v, `\n`);

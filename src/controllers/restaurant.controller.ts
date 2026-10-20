@@ -46,7 +46,6 @@ restaurantController.processSignup = async (
 ) => {
   try {
     console.log("Process Signup");
-    console.log("req.bodylar", req.body)
     // Requestdan file ni olish 
     const file = req.file;
     if (!file) throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
@@ -62,7 +61,8 @@ restaurantController.processSignup = async (
     // session succesfully browser ichidagi coockie ga sid nijoylaydi/
     // Shuningdek DB sessions collectioniga joylab keyingi browserga response qaytaradi
     req.session.save(function () {
-      res.redirect("/admin/product/all")
+
+      res.redirect("/admin/product/all");
       console.log("Sign Up Done");
     });
   } catch (err) {
