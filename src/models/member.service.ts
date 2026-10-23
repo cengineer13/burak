@@ -2,7 +2,7 @@ import { HttpCode, Message } from "../libs/errors";
 import { LoginInput, Member, MemberInput, MemberUpdateInput } from "../libs/types/member";
 import MemberModel from "../schema/Member.model";
 import Errors from "../libs/errors";
-import { MemberType } from "../libs/enums/member.enum";
+import { MemberStatus, MemberType } from "../libs/enums/member.enum";
 import * as bcrypt from "bcryptjs";
 import { shapeIntoMongooseObjectId } from "../libs/config";
 
@@ -35,13 +35,21 @@ class MemberService {
     // member hosil qilib Schme modeldan DB ichidan qidiramiz
     const member = await this.memberModel
       .findOne(
-        { memberNick: input.memberNick },
-        { memberNick: 1, memberPassword: 1 },
+        {
+          memberNick: input.memberNick,
+          memberStatus: { $ne: MemberStatus.DELETE }
+        },
+        { memberNick: 1, memberPassword: 1, memberStatus: 1 },
       )
       .exec();
 
     // agar member DB da mavjud bo'lmasa Error qilamiz va uni controler catchga uzatamiz
     if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
+    else if (member.memberStatus === MemberStatus.BLOCK) {
+      throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER)
+    }
+
+
 
     // agar input pw bn DB dagi hashlanga pw bir xilligni tekshirish
     const isMatch = await bcrypt.compare(
