@@ -31,7 +31,7 @@ productController.getAllProducts = async (req: Request, res: Response) => {
 productController.createNewProduct = async (req: AdminRequests, res: Response) => {
     try {
         console.log("createNewProduct ");
-        // console.log("req files:", req.files)
+        console.log("req body:", req.body)
 
         // agar input array file 0 bo'lsa fale boladi va xato kelib chiqadi
         if (!req.files?.length)
@@ -50,7 +50,7 @@ productController.createNewProduct = async (req: AdminRequests, res: Response) =
         console.log("Error on createNewProduct page", err);
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
         res.send(
-            `<script> alert('${message}'); window.location.replace('admin/product/all')</script>`
+            `<script> alert('${message}'); window.location.replace('/admin/product/all')</script>`
         );
     }
 };
