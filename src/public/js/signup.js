@@ -11,8 +11,8 @@ $(function () {
             if (!uploadFile) return;
 
             // console.log(uploadFile); - faylni xususiyatlarini korish
-            const fileType = uploadFile["type"];
-            const validImageType = ["image/jpg", "image/jpeg", "image/png"];
+            const fileType = uploadFile["type"],
+                validImageType = ["image/jpg", "image/jpeg", "image/png"];
             if (!validImageType.includes(fileType)) {
                 alert("Please insert only jpg, jpeg and png formats!");
                 $(this).val("");
@@ -68,10 +68,10 @@ $(".member-password, .confirm-password").on("input", function () {
 
 // Submit dan oldin front end ozida validatsiya qilish
 function validateSignupForm() {
-    const memberNick = $(".member-nick").val();
-    const memberPhone = $(".member-phone").val();
-    const memberPassword = $(".member-password").val();
-    const confirmPassword = $(".confirm-password").val();
+    const memberNick = $(".member-nick").val(),
+        memberPhone = $(".member-phone").val(),
+        memberPassword = $(".member-password").val(),
+        confirmPassword = $(".confirm-password").val();
 
     if (memberNick === "" ||
         memberPhone === "" ||
